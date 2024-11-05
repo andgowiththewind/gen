@@ -1,6 +1,8 @@
 package com.gust.cafe.gen.controller;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.IdUtil;
+import com.gust.cafe.gen.dto.core.R;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -10,7 +12,7 @@ import java.util.Map;
 public class LoginController {
 
     @PostMapping("/test")
-    public String test(@RequestBody Map<String, Object> map) {
-        return DateUtil.now();
+    public R test(@RequestBody Map<String, Object> map) {
+        return R.data(IdUtil.simpleUUID().toLowerCase());
     }
 }
