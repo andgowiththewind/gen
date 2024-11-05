@@ -1,13 +1,14 @@
 // ###########################################################################################################
-// #                                             简化版                                                       #
+// #                                             简化版                                                      #
 // ###########################################################################################################
 import axios from 'axios'
-import {Notification, MessageBox, Message, Loading} from 'element-ui'
+// import {Notification, MessageBox, Message, Loading} from 'element-ui'
 import {handleRequestAntiShake, handleGetRequest} from './requestHelper';
 
 
 // 创建axios实例
 const service = axios.create({
+    baseURL: process.env.VUE_APP_BASE_API, // api 的 base_url,单独打包Nginx时才需要
     timeout: 10 * 1000,
     headers: {
         Accept: 'application/json; charset=utf-8',
@@ -58,7 +59,10 @@ service.interceptors.response.use(
         // 但凡不是200的状态码,都认为是错误
         if (code !== 200) {
             // 弹框信息
-            Notification.error({title: '错误', message: msg, position: 'bottom-right'});
+            // Notification.error({title: '错误', message: msg, position: 'bottom-right'});
+
+            console.log("待替换：" + msg);
+
             // 返回错误
             return Promise.reject(new Error(msg));
         }
@@ -77,7 +81,10 @@ service.interceptors.response.use(
         } else if (message.includes("Request failed with status code")) {
             message = "系统接口 " + message.substr(message.length - 3) + " 异常";
         }
-        Message({message: message, type: 'error', duration: 5 * 1000})
+        // Message({message: message, type: 'error', duration: 5 * 1000})
+
+        console.log("待替换：" + message);
+
         return Promise.reject(error)
     }
 )

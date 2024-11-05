@@ -28,7 +28,8 @@
               sign in OR sign up
             </vs-button>
             <div class="new">
-              New Here? <a href="#">Create New Account</a>
+              <span @click="test001">New Here?</span>
+              <a href="#">Create New Account</a>
             </div>
           </div>
         </template>
@@ -43,6 +44,8 @@
 <script>
 import {mapActions} from 'vuex';
 import Logo from '@/assets/logo.png';
+import {loginTestFn} from '@/apis/genLoginApi';
+
 
 export default {
   name: "GenLogin",
@@ -63,7 +66,14 @@ export default {
       this.dialogVShow = true;
     },
     signInOrSignUp() {
-      console.log('signInOrSignUp')
+      loginTestFn({email: this.email, password: this.password}).then(res => {
+        console.log(res); // 2024-11-06 00:23:18
+        this.saveToken(res);
+      });
+    },
+    test001() {
+      // 打印token
+      console.log(this.$store.state.auth.token); // 2024-11-06 00:23:18
     },
   },// methods
   watch: {
