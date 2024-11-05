@@ -1,0 +1,14 @@
+server:
+  port: 8848
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB    # 单个文件最大 N MB
+      max-request-size: 10MB # 请求最大 N MB
+  profiles:
+    include:
+      - druid
+      - mybatis
+  main:
+    banner-mode: off # 关闭banner
