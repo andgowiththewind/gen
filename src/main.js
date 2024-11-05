@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+import store from './store';
 import Vuesax from 'vuesax';
 import moment from "moment";
 import 'vuesax/dist/vuesax.css';
@@ -12,6 +13,7 @@ Vue.config.productionTip = false;
 
 new Vue({
     router,
+    store,
     render: (h) => h(App),
     beforeCreate() {
         moment.locale('zh-cn');//全局使用moment.js,使用时示例:`this.$moment(new Date()).format('YYYY-MM-DD HH:mm:ss')`
