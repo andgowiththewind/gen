@@ -4,6 +4,7 @@
         absolute
         hover-expand
         v-model="active"
+        style="border: solid 2px #00857d;"
         open>
       <template #logo>
         <vs-avatar><img :src="LogoObj" alt=""></vs-avatar>
