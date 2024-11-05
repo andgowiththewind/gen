@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 import Logo from '@/assets/logo.png';
 
 export default {
@@ -57,6 +58,7 @@ export default {
     }
   },// data
   methods: {
+    ...mapActions('auth', ['saveToken']),
     handleAvatarClick() {
       this.dialogVShow = true;
     },
