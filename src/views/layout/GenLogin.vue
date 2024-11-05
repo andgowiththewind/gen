@@ -1,33 +1,41 @@
 <template>
   <div class="login-container">
-    <vs-dialog v-model="active">
-      <template #header><h4 class="not-margin"><b>gen-copilot</b></h4></template>
-      <div class="con-form">
-        <vs-input v-model="email" placeholder="Email">
-          <template #icon>@</template>
-        </vs-input>
-        <vs-input type="password" v-model="password" placeholder="Password">
-          <template #icon>
-            <i class='bx bxs-lock'></i>
-          </template>
-        </vs-input>
-        <div class="flex">
-          <vs-checkbox v-model="remember">Remember me</vs-checkbox>
-          <a href="#">Forgot Password?</a>
-        </div>
-      </div>
-      <template #footer>
-        <div class="footer-dialog">
-          <vs-button block>
-            Sign In
-          </vs-button>
-          <div class="new">
-            New Here? <a href="#">Create New Account</a>
+    <div v-show="dialogVShow">
+      <vs-dialog
+          blur
+          not-close
+          prevent-close
+          v-model="active">
+        <template #header><h4 class="not-margin"><b>gen-copilot</b></h4></template>
+        <div class="con-form">
+          <vs-input v-model="email" placeholder="Email">
+            <template #icon>@</template>
+          </vs-input>
+          <vs-input type="password" v-model="password" placeholder="Password">
+            <template #icon>
+              <i class='bx bxs-lock'></i>
+            </template>
+          </vs-input>
+          <div class="flex">
+            <vs-checkbox v-model="remember">Remember Me</vs-checkbox>
+            <a href="#">Forgot Password?</a>
           </div>
         </div>
-      </template>
-    </vs-dialog>
-    <img :src="LogoObj" alt="">
+        <template #footer>
+          <div class="footer-dialog">
+            <vs-button block>
+              sign in OR sign up
+            </vs-button>
+            <div class="new">
+              New Here? <a href="#">Create New Account</a>
+            </div>
+          </div>
+        </template>
+      </vs-dialog>
+    </div>
+    <div @click="handleAvatarClick">
+      <img :src="LogoObj" alt="">
+    </div>
   </div>
 </template>
 
@@ -40,13 +48,18 @@ export default {
   data() {
     return {
       LogoObj: Logo,
-      active: true,
+      active: true, // 关闭后重新打开会丢失样式,改为 dialogVShow 控制;active保持为true
       email: '',
       password: '',
-      remember: false
+      remember: false,
+      dialogVShow: false,
     }
   },// data
-  methods: {},// methods
+  methods: {
+    handleAvatarClick() {
+      this.dialogVShow = true;
+    },
+  },// methods
   watch: {
     // 'searchParamVo.topPath': {handler: function (val, oldVal) {if (val) {this.searchParamVo.topPath = val;this.searchParamVo.topPath = '';}}, deep: true},
   },// watch
@@ -142,7 +155,4 @@ export default {
 .login-container >>> .footer-dialog .vs-button {
   margin: 0px;
 }
-
-
 </style>
-
