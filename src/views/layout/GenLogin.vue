@@ -5,6 +5,7 @@
           blur
           not-close
           prevent-close
+          overflow-hidden
           v-model="active">
         <template #header><h4 class="not-margin"><b>gen-copilot</b></h4></template>
         <div class="con-form">
@@ -23,7 +24,7 @@
         </div>
         <template #footer>
           <div class="footer-dialog">
-            <vs-button block>
+            <vs-button block @click="signInOrSignUp">
               sign in OR sign up
             </vs-button>
             <div class="new">
@@ -58,6 +59,9 @@ export default {
   methods: {
     handleAvatarClick() {
       this.dialogVShow = true;
+    },
+    signInOrSignUp() {
+      console.log('signInOrSignUp')
     },
   },// methods
   watch: {
