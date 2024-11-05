@@ -45,7 +45,7 @@
 import {mapActions} from 'vuex';
 import Logo from '@/assets/logo.png';
 import {loginTestFn} from '@/apis/genLoginApi';
-
+import {devConsoleLog} from '@/utils/commonUtils';
 
 export default {
   name: "GenLogin",
@@ -67,13 +67,12 @@ export default {
     },
     signInOrSignUp() {
       loginTestFn({email: this.email, password: this.password}).then(res => {
-        console.log(res); // 2024-11-06 00:23:18
-        this.saveToken(res);
+        devConsoleLog('signInOrSignUp', res);
+        this.saveToken(res.data);
       });
     },
     test001() {
-      // 打印token
-      console.log(this.$store.state.auth.token); // 2024-11-06 00:23:18
+      devConsoleLog('test get token from store', this.$store.state.auth.token);
     },
   },// methods
   watch: {
