@@ -77,6 +77,71 @@ export default {
   align-items: center; /* 垂直居中 */
 }
 
+.login-container >>> .not-margin {
+  margin: 0px;
+  font-weight: normal;
+  padding: 10px;
+}
+
+.login-container >>> .con-form {
+  width: 100%;
+}
+
+.login-container >>> .con-form .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-container >>> .con-form .flex a {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.login-container >>> .con-form .flex a:hover {
+  opacity: 1;
+}
+
+.login-container >>> .con-form .vs-checkbox-label {
+  font-size: 0.8rem;
+}
+
+.login-container >>> .con-form .vs-input-content {
+  margin: 10px 0px;
+  width: calc(100%);
+}
+
+.login-container >>> .con-form .vs-input-content .vs-input {
+  width: 100%;
+}
+
+.login-container >>> .footer-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: calc(100%);
+}
+
+.login-container >>> .footer-dialog .new {
+  margin: 0px;
+  margin-top: 20px;
+  padding: 0px;
+  font-size: 0.7rem;
+}
+
+.login-container >>> .footer-dialog .new a {
+  color: var(--vs-primary) !important; /* 确保已定义此 CSS 变量 */
+  margin-left: 6px;
+}
+
+.login-container >>> .footer-dialog .new a:hover {
+  text-decoration: underline;
+}
+
+.login-container >>> .footer-dialog .vs-button {
+  margin: 0px;
+}
 
 
 </style>
