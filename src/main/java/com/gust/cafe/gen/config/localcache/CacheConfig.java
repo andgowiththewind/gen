@@ -1,4 +1,4 @@
-package com.gust.cafe.gen.config;
+package com.gust.cafe.gen.config.localcache;
 
 
 import com.github.benmanes.caffeine.cache.Caffeine;
