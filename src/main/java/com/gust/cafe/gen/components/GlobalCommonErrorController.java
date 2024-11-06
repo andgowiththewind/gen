@@ -1,4 +1,4 @@
-package com.gust.cafe.gen.controller.core;
+package com.gust.cafe.gen.components;
 
 
 import cn.hutool.core.util.StrUtil;

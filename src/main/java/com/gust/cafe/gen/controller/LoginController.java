@@ -6,6 +6,8 @@ import com.gust.cafe.gen.config.threadlocal.LocaleHolder;
 import com.gust.cafe.gen.domain.SysUser;
 import com.gust.cafe.gen.dto.core.R;
 import com.gust.cafe.gen.mapper.SysUserMapper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +20,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/login")
+@Api(tags = "登录")
 public class LoginController {
     private final SysUserMapper sysUserMapper;
 
@@ -26,6 +29,7 @@ public class LoginController {
     }
 
     @PostMapping("/test")
+    @ApiOperation(value = "测试", notes = "测试")
     public R test(@RequestBody Map<String, Object> map) {
         List<SysUser> sysUsers = sysUserMapper.selectAll();
 
