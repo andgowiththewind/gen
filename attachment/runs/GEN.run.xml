@@ -1,21 +1,21 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="GEN" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <envs>
-      <env name="INPUT_ENV_LOG_CHARSET" value="UTF-8" />
-      <env name="INPUT_ENV_LOG_HOME" value="./logs/" />
-      <env name="INPUT_ENV_LOG_LEVEL" value="DEBUG" />
-    </envs>
-    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-    <module name="gen" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.gust.cafe.gen.GenApplication" />
-    <extension name="coverage">
-      <pattern>
-        <option name="PATTERN" value="com.gust.cafe.gen.*" />
-        <option name="ENABLED" value="true" />
-      </pattern>
-    </extension>
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
-  </configuration>
+    <configuration default="false" name="GEN" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+        <envs>
+            <env name="INPUT_ENV_LOG_CHARSET" value="UTF-8"/>
+            <env name="INPUT_ENV_LOG_HOME" value="./logs/"/>
+            <env name="INPUT_ENV_LOG_LEVEL" value="DEBUG"/>
+        </envs>
+        <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources"/>
+        <module name="gen"/>
+        <option name="SPRING_BOOT_MAIN_CLASS" value="com.gust.cafe.gen.GenApplication"/>
+        <extension name="coverage">
+            <pattern>
+                <option name="PATTERN" value="com.gust.cafe.gen.*"/>
+                <option name="ENABLED" value="true"/>
+            </pattern>
+        </extension>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
 </component>
