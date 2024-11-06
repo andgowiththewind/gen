@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.gust.cafe</groupId>
@@ -17,7 +17,8 @@
         <sqlite.version>3.46.1.3</sqlite.version>
         <druid.version>1.2.23</druid.version>
         <pagehelper.version>2.1.0</pagehelper.version>
-        <tkmybatis.version>5.0.0</tkmybatis.version>
+        <!--tkmybatis5.X开始要求JDK17-->
+        <tkmybatis.version>4.3.0</tkmybatis.version>
         <hutool.version>5.8.26</hutool.version>
         <bouncy.castle.version>1.66</bouncy.castle.version>
         <swagger.version>2.10.5</swagger.version>
