@@ -1,5 +1,6 @@
 package com.gust.cafe.gen;
 
+import com.gust.cafe.gen.util.SqliteUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -11,6 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class GenApplication {
 
     public static void main(String[] args) {
+        SqliteUtil.init();
         SpringApplication.run(GenApplication.class, args);
     }
 
