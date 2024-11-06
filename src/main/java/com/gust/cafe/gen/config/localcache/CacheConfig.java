@@ -1,6 +1,5 @@
 package com.gust.cafe.gen.config.localcache;
 
-
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
