@@ -32,20 +32,14 @@ import java.util.List;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    /**
-     * 使用 ExceptionUtil.getRootCause 获取异常链中最底层的异常,这通常是触发问题的原始异常。
-     * 然后使用 ExceptionUtil.stacktraceToString 将整个异常堆栈转换为单个字符串,便于日志记录。
-     */
     @ExceptionHandler(RuntimeException.class)
     public R handleRuntimeException(RuntimeException e, HttpServletRequest request) {
-        // 获取最根本的异常
-        Throwable rootCause = ExceptionUtil.getRootCause(e);
-        String rootCauseMessage = rootCause.getMessage(); // 根本原因的消息
-        // 获取完整的堆栈信息为字符串
-        String stackTraceString = ExceptionUtil.stacktraceToString(e);
         // 记录日志,可以使用任意日志框架
-        log.error("请求地址'{}',发生系统异常.错误详情: {}", request.getRequestURI(), stackTraceString);
+        String logMessage = StrUtil.format("[{}][{}]发生系统异常:", request.getMethod(), request.getRequestURI());
+        log.error(logMessage, e);
+
         // 返回给前端的信息,可能需要对信息进行适当的隐藏或简化,避免暴露敏感信息
+        // 整合国际化
         // String msg = WindyLang.msg("i18n_1827983611958267904");// 系统错误,请联系管理员
         return R.error("系统错误,请联系管理员");
     }
