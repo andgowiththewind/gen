@@ -15,6 +15,7 @@ public class LoginController {
     @PostMapping("/test")
     public R test(@RequestBody Map<String, Object> map) {
         Locale locale = LocaleHolder.getLocale();
+        int a = 1 / 0;
         return R.data(IdUtil.simpleUUID().toLowerCase());
     }
 }
