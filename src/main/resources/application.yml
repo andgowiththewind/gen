@@ -12,3 +12,6 @@ spring:
       - mybatis
   main:
     banner-mode: off # 关闭banner
+  messages:
+    basename: messages # i18n messages 国际化,src/main/resources/messages.properties
+    encoding: UTF-8
