@@ -14,7 +14,7 @@ public class LocaleHolder {
     public static Locale getLocale() {
         Locale locale = userThreadLocal.get();
         if (locale == null) {
-            return Locale.forLanguageTag("zh-CN");
+            return Locale.forLanguageTag("zh-CN"); // 默认中文
         }
         return locale;
     }
