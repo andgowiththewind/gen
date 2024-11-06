@@ -44,7 +44,8 @@
 <script>
 import {mapActions} from 'vuex';
 import Logo from '@/assets/logo.png';
-import {loginTestFn} from '@/apis/genLoginApi';
+import Cookies from 'js-cookie';
+import {signInOrSignUpFn} from '@/apis/genLoginApi';
 import {devConsoleLog} from '@/utils/commonUtils';
 
 export default {
@@ -66,20 +67,29 @@ export default {
       this.dialogVShow = true;
     },
     signInOrSignUp() {
-      loginTestFn({email: this.email, password: this.password}).then(res => {
+      signInOrSignUpFn({email: this.email, password: this.password}).then(res => {
         devConsoleLog('signInOrSignUp', res);
         this.saveToken(res.data);
       });
     },
     test001() {
-      devConsoleLog('test get token from store', this.$store.state.auth.token);
+      devConsoleLog('get token from store:', this.$store.state.auth.token);
+    },
+    pageInit() {
+      // 可能勾选了Remember me,从 Cookies 中尝试获取 token
+      let token = Cookies.get('token');
+      if (token) {
+        this.saveToken(token);
+      } else {
+        this.dialogVShow = true;
+      }
     },
   },// methods
   watch: {
     // 'searchParamVo.topPath': {handler: function (val, oldVal) {if (val) {this.searchParamVo.topPath = val;this.searchParamVo.topPath = '';}}, deep: true},
   },// watch
   mounted() {
-    // this.init();
+    this.pageInit();
   },// mounted
 }
 </script>

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function loginTestFn(data) {
+export function signInOrSignUpFn(data) {
     return request({
         url: '/login/test',
         method: 'post',
