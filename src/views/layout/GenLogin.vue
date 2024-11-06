@@ -9,7 +9,7 @@
           v-model="active">
         <template #header><h4 class="not-margin"><b>gen-copilot</b></h4></template>
         <div class="con-form">
-          <vs-input v-model="email" placeholder="Email">
+          <vs-input v-model="username" placeholder="username">
             <template #icon>@</template>
           </vs-input>
           <vs-input type="password" v-model="password" placeholder="Password">
@@ -55,7 +55,7 @@ export default {
     return {
       LogoObj: Logo,
       active: true, // 关闭后重新打开会丢失样式,改为 dialogVShow 控制;active保持为true
-      email: '',
+      username: '',
       password: '',
       remember: false,
       dialogVShow: false,
@@ -67,9 +67,26 @@ export default {
       this.dialogVShow = true;
     },
     signInOrSignUp() {
-      signInOrSignUpFn({email: this.email, password: this.password}).then(res => {
+      signInOrSignUpFn({username: this.username, password: this.password}).then(res => {
         devConsoleLog('signInOrSignUp', res);
+        this.$vs.notification({
+          flat: true,
+          duration: 3000,
+          icon: `<i class='bx bxs-time'></i>`,
+          progress: 'auto',
+          title: 'success',
+          text: res.msg,
+          position: 'bottom-right',
+          color: 'success',
+          border: 'success',
+        });
         this.saveToken(res.data);
+
+        if (this.remember) {
+          Cookies.set('token', res.data, {expires: 7});// 7天
+        }
+        // 跳转`/dashboard`
+        this.$router.push({path: '/dashboard'});
       });
     },
     test001() {
