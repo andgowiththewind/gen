@@ -12,18 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 在第一个filter中对`request`进行包装实现流多次读取的要求
- *
- * @author Dororo
- * @date 2024-11-06 10:25:34
+ * 此二号 filter 用于国际化处理,如果不需要国际化,可以不用此 filter
  */
 @Slf4j
 @Component
-@Order(1) // 数值越小，优先级越高
-public class OrderOneWrapperFilter extends OncePerRequestFilter {
+@Order(2) // 数值越小，优先级越高
+public class OrderTwoI18nWrapperFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        // 目的是进行包装,使得流可以多次读取
-        filterChain.doFilter(new CachedBodyHttpServletRequest(request), response);
+        // 约定请求参数中的语言字段为`lang`
+        String lang = request.getParameter("lang");
+        filterChain.doFilter(request, response);
     }
 }
