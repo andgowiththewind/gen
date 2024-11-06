@@ -58,7 +58,9 @@ public class LoginController {
                     .updateTime(DateUtil.now())
                     .build();
             sysUserMapper.insert(insertVo);
-            return R.ok("注册成功");
+            String token = IdUtils.shortNanoId(32);
+            cacheManager.getCache(CacheConstant.TOKEN).put(token, insertVo);
+            return R.data(token).putOpt("msg", "注册成功");
         }
 
         // sysUser 不为 null,校验密码
@@ -68,7 +70,7 @@ public class LoginController {
         // 登录成功,生成 token
         String token = IdUtils.shortNanoId(32);
         cacheManager.getCache(CacheConstant.TOKEN).put(token, sysUser);
-        return R.data(token);
+        return R.data(token).putOpt("msg", "登录成功");
     }
 
 
