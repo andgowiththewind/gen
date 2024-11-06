@@ -23,7 +23,7 @@ public class SwaggerConfig {
     public Docket defaultGroup() {
         // Docket 是 Swagger 的配置类,如果有多个分组,则需要配置多个 Docket,每个 Docket 可以指定不同的扫描路径
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("默认分组")
+                // .groupName("默认分组")// 这里不要设置分组名称,这样直接访问`/v2/api-docs`即可,如果加了分组还要加参数`?group=分组名称`
                 .select()
                 // .apis(RequestHandlerSelectors.any()) // 扫描所有API
                 .apis(RequestHandlerSelectors.basePackage("com.gust.cafe.gen.controller"))// 扫描指定包中的API
