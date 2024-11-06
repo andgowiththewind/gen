@@ -1,5 +1,7 @@
 package com.gust.cafe.gen.config.mybatis;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.StrUtil;
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +9,7 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
@@ -32,9 +35,14 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("GEN-工器 文档")
-                .description("GEN API 文档")
+                .contact(new Contact("多罗罗丶", "https://stackoverflow.com/", "123456789@qq.com"))
                 .version("1.0.0")
+                .title("GEN-API文档")
+                .description(StrUtil.format("GEN-API文档 @ {}", DateUtil.now()))
+                .termsOfServiceUrl("https://stackoverflow.com/")
+                .license("Apache License Version 2.0")
+                .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
+                .extensions(null)
                 .build();
     }
 }
