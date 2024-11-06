@@ -150,11 +150,7 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
+        <!--        <dependency><groupId>io.springfox</groupId><artifactId>springfox-swagger-ui</artifactId><version>${swagger.version}</version></dependency>-->
         <!--Swagger2的皮肤包 https://doc.xiaominfo.com/docs/quick-start -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
