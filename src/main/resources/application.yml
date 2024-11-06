@@ -10,7 +10,6 @@ spring:
     include:
       - druid
       - mybatis
-      - knife4j
   main:
     banner-mode: off # 关闭banner
   messages:
