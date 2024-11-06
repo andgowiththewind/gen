@@ -2,7 +2,7 @@
 // #                                             简化版                                                      #
 // ###########################################################################################################
 import axios from 'axios'
-// import {Notification, MessageBox, Message, Loading} from 'element-ui'
+import Vue from 'vue';
 import {handleRequestAntiShake, handleGetRequest} from './requestHelper';
 
 
@@ -60,8 +60,17 @@ service.interceptors.response.use(
         if (code !== 200) {
             // 弹框信息
             // Notification.error({title: '错误', message: msg, position: 'bottom-right'});
-
-            console.log("待替换：" + msg);
+            Vue.prototype.$vs.notification({
+                flat: true,
+                duration: 3000,
+                icon: `<i class='bx bxs-time'></i>`,
+                progress: 'auto',
+                title: 'error',
+                text: msg,
+                position: 'bottom-right',
+                color: 'danger',
+                border: 'warn',
+            });
 
             // 返回错误
             return Promise.reject(new Error(msg));
@@ -82,8 +91,17 @@ service.interceptors.response.use(
             message = "系统接口 " + message.substr(message.length - 3) + " 异常";
         }
         // Message({message: message, type: 'error', duration: 5 * 1000})
-
-        console.log("待替换：" + message);
+        Vue.prototype.$vs.notification({
+            flat: true,
+            duration: 3000,
+            icon: `<i class='bx bxs-time'></i>`,
+            progress: 'auto',
+            title: 'error',
+            text: message,
+            position: 'bottom-right',
+            color: 'danger',
+            border: 'warn',
+        });
 
         return Promise.reject(error)
     }
