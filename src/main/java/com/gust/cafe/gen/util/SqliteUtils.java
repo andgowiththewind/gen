@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SqliteUtil {
+public class SqliteUtils {
 
     @SneakyThrows
     public static void init() {
