@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gust.cafe.gen.mapper.SysUserMapper">
+    <resultMap id="BaseResultMap" type="com.gust.cafe.gen.domain.SysUser">
+        <!--@mbg.generated generated on Wed Nov 06 16:01:11 CST 2024.-->
+        <!--@Table sys_user-->
+        <id column="id" jdbcType="LONGVARCHAR" property="id"/>
+        <result column="display_name" jdbcType="LONGVARCHAR" property="displayName"/>
+        <result column="avatar" jdbcType="LONGVARCHAR" property="avatar"/>
+        <result column="username" jdbcType="LONGVARCHAR" property="username"/>
+        <result column="password" jdbcType="LONGVARCHAR" property="password"/>
+        <result column="email" jdbcType="LONGVARCHAR" property="email"/>
+        <result column="is_enabled" jdbcType="INTEGER" property="isEnabled"/>
+        <result column="create_by" jdbcType="LONGVARCHAR" property="createBy"/>
+        <result column="create_time" jdbcType="LONGVARCHAR" property="createTime"/>
+        <result column="update_by" jdbcType="LONGVARCHAR" property="updateBy"/>
+        <result column="update_time" jdbcType="LONGVARCHAR" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated generated on Wed Nov 06 16:01:11 CST 2024.-->
+        id,
+        display_name,
+        avatar,
+        username,
+        "password",
+        email,
+        is_enabled,
+        create_by,
+        create_time,
+        update_by,
+        update_time
+    </sql>
+    <select id="findByAll" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="displayName != null and displayName != ''">
+                AND display_name = #{displayName,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="avatar != null and avatar != ''">
+                AND avatar = #{avatar,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="username != null and username != ''">
+                AND username = #{username,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="password != null and password != ''">
+                AND "password" = #{password,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="email != null and email != ''">
+                AND email = #{email,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="isEnabled != null">
+                AND is_enabled = #{isEnabled,jdbcType=INTEGER}
+            </if>
+            <if test="createBy != null and createBy != ''">
+                AND create_by = #{createBy,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND create_time = #{createTime,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                AND update_by = #{updateBy,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                AND update_time = #{updateTime,jdbcType=LONGVARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>
