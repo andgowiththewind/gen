@@ -23,8 +23,8 @@ public class TestController {
     @GetMapping("/test001")
     public R test001(@RequestParam("name") String name, @RequestParam("key") String key) {
         Cache cache = cacheManager.getCache(name);
-        String value = cache.get(key, String.class);
-        return R.ok(value);
+        Object object = cache.get(key, Object.class);
+        return R.data(object);
     }
 
 

@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.function.Consumer;
-
 /**
  * 自定义业务异常
  */
@@ -28,9 +26,9 @@ public class GenServiceException extends RuntimeException {
     /**
      * 调用此方法运行的代码块，如果有异常则抛出指定的自定义异常{@link GenServiceException}
      */
-    public static void wrapper(Consumer<Void> consumer) {
+    public static void wrapper(Runnable runnable) {
         try {
-            consumer.accept(null);
+            runnable.run();
         } catch (Exception e) {
             throw new GenServiceException(e.getMessage());
         }

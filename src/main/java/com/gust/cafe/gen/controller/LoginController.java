@@ -9,6 +9,7 @@ import com.gust.cafe.gen.domain.SysUser;
 import com.gust.cafe.gen.dto.core.R;
 import com.gust.cafe.gen.dto.req.SignInOrSignUpReqDTO;
 import com.gust.cafe.gen.enums.YesNoEnum;
+import com.gust.cafe.gen.exception.GenServiceException;
 import com.gust.cafe.gen.mapper.SysUserMapper;
 import com.gust.cafe.gen.util.IdUtils;
 import io.swagger.annotations.Api;
@@ -41,7 +42,7 @@ public class LoginController {
         // 简化:直接注册
         if (sysUser == null) {
             String username = StrUtil.trim(reqDTO.getUsername());
-            Assert.isFalse(StrUtil.equalsIgnoreCase(username, "admin"), "当前用户名已存在");
+            GenServiceException.wrapper(() -> Assert.isFalse(StrUtil.equalsIgnoreCase(username, "admin"), "当前用户名已存在"));
             //
             SysUser insertVo = SysUser.builder()
                     .id(IdUtils.shortNanoId(11))
@@ -62,7 +63,7 @@ public class LoginController {
 
         // sysUser 不为 null,校验密码
         String currentPass = DigestUtil.sha256Hex(reqDTO.getPassword());
-        Assert.isTrue(StrUtil.equals(sysUser.getPassword(), currentPass), "密码错误");
+        GenServiceException.wrapper(() -> Assert.isTrue(StrUtil.equals(sysUser.getPassword(), currentPass), "密码错误"));
 
         // 登录成功,生成 token
         String token = IdUtils.shortNanoId(32);
