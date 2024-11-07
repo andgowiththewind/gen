@@ -6,6 +6,7 @@ import Vuesax from 'vuesax';
 import moment from "moment";
 import 'vuesax/dist/vuesax.css';
 import 'boxicons/css/boxicons.min.css';
+import i18n from '@/i18n';
 
 Vue.use(Vuesax);
 
@@ -14,6 +15,7 @@ Vue.config.productionTip = false;
 new Vue({
     router,
     store,
+    i18n,
     render: (h) => h(App),
     beforeCreate() {
         moment.locale('zh-cn');//全局使用moment.js,使用时示例:`this.$moment(new Date()).format('YYYY-MM-DD HH:mm:ss')`
