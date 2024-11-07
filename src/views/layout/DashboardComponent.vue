@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <div class="header">
       <!-- 上部 10% 的内容 -->
-      上部内容
+      <DashboardComponentHeader></DashboardComponentHeader>
     </div>
     <div class="content">
       <!-- 中间 80% 的内容 -->
@@ -19,11 +19,12 @@
 import * as commonConsts from '@/config/CommonConsts';
 import MenuHome from '@/views/menu/MenuHome.vue';
 import MenuUser from '@/views/menu/MenuUser.vue';
+import DashboardComponentHeader from '@/views/layout/DashboardComponentHeader.vue';
 
 
 export default {
   name: "DashboardComponent",
-  components: {MenuHome, MenuUser},
+  components: {MenuHome, MenuUser, DashboardComponentHeader},
   data() {
     return {
       currentPage: 'MenuHome',
@@ -58,6 +59,7 @@ export default {
 .header {
   flex: 0 0 50px; /* 固定占用 10% 的高度 */
   background-color: #faf9f8; /* 可选：背景色 */
+  max-height: 50px;
 }
 
 .content {
@@ -68,6 +70,7 @@ export default {
 
 .footer {
   flex: 0 0 50px; /* 固定占用 10% 的高度 */
-  background-color: #133556; /* 可选：背景色 */
+  background-color: #c6b145; /* 可选：背景色 */
+  max-height: 50px;
 }
 </style>
