@@ -44,3 +44,6 @@ $ npm install boxicons --save
 npm install vue-router
 ```
 
+```bash
+npm install vue-i18n@8
+```
