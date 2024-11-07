@@ -71,14 +71,14 @@ export default {
         devConsoleLog('signInOrSignUp', res);
         this.$vs.notification({
           flat: true,
-          duration: 3000,
+          duration: 4500,
           icon: `<i class='bx bxs-time'></i>`,
           progress: 'auto',
           title: 'success',
           text: res.msg,
           position: 'bottom-right',
           color: 'success',
-          border: 'success',
+          border: 'warn',
         });
         this.saveToken(res.data);
 

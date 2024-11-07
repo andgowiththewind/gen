@@ -3,7 +3,7 @@
 // ###########################################################################################################
 import axios from 'axios'
 import Vue from 'vue';
-import {handleRequestAntiShake, handleGetRequest} from './requestHelper';
+import {handleGetRequest, handleRequestAntiShake} from './requestHelper';
 
 
 // 创建axios实例
@@ -62,7 +62,7 @@ service.interceptors.response.use(
             // Notification.error({title: '错误', message: msg, position: 'bottom-right'});
             Vue.prototype.$vs.notification({
                 flat: true,
-                duration: 3000,
+                duration: 5000,
                 icon: `<i class='bx bxs-time'></i>`,
                 progress: 'auto',
                 title: 'error',
@@ -93,7 +93,7 @@ service.interceptors.response.use(
         // Message({message: message, type: 'error', duration: 5 * 1000})
         Vue.prototype.$vs.notification({
             flat: true,
-            duration: 3000,
+            duration: 5000,
             icon: `<i class='bx bxs-time'></i>`,
             progress: 'auto',
             title: 'error',
